@@ -36,11 +36,11 @@ class CategoryScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(top:8.0,left: 8.0, right:8.0),
       child: ListView(
         children: [
           Container(
-            height: 250,
+            height: MediaQuery.of(context).size.height/2.5,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.black,
@@ -116,159 +116,142 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
+          
+          Divider(color: Colors.white,thickness: 2,),
+          
+          Padding(
+            padding: const EdgeInsets.only(top: 8,left:12.0,right: 8.0),
+            child: headingtext('Achievements')
           ),
-          Card(
-            elevation: 8,
-            child: Container(
-              padding: EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Achievements',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  achievementsCard('Current League', currentLeague),
-                  achievementsCard('League Ranking', leagueRanking),
-                  achievementsCard('Experience', experience),
-                  achievementsCard('Number of Wins', wins.toString()),
-                ],
-              ),
+                SizedBox(
+                  height: 8.0,
+                ),
+          Container(
+            padding: EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                
+                achievementsCard('Current League', currentLeague),
+                achievementsCard('League Ranking', leagueRanking),
+                achievementsCard('Experience', experience),
+                achievementsCard('Number of Wins', wins.toString()),
+              ],
             ),
           ),
-          SizedBox(height: 5.0,),
-          Card(
-            elevation: 8,
-            child: Container(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Past featured performances',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(top:12.0),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                pastPerformances[index]['image'].toString()),
+          Divider(color: Colors.white,thickness: 2,),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headingtext('Past featured performances'),
+                SizedBox(
+                  height: 8.0,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(top:12.0),
+                    child: Row(
+                      
+                      children: [
+                        Container( 
+                          height: 120, 
+                          width: 150,
+                        decoration: BoxDecoration( 
+                          image: DecorationImage(image: NetworkImage(pastPerformances[index]['image'].toString(),),fit: BoxFit.cover)
+                        ),
+                        ),
+                        SizedBox(width: 20,),
+                        Expanded(
+                          child: Text(
+                            pastPerformances[index]['Name'].toString(),
+                            softWrap: true,
+                            // overflow: TextOverflow.fade,
+                            style: TextStyle(fontSize: 18,color: Colors.pink,fontWeight: FontWeight.w500),
                           ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              pastPerformances[index]['Name'].toString(),
-                              softWrap: true,
-                              // overflow: TextOverflow.fade,
-                              style: TextStyle(fontSize: 18,),
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                    itemCount: pastPerformances.length,
-                  )
-                ],
-              ),
+                  ),
+                  itemCount: pastPerformances.length,
+                )
+              ],
             ),
           ),
-          SizedBox(height: 6.0,),
-          Card(
-            elevation: 8,
-            child: Container(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Clan discussions',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(top:8.0),
-                      child: Row(
-                        children: [
-                          Text(discussion[index]['heading'].toString(),style: TextStyle(fontSize: 20,),),
-                          SizedBox(width: 8.0,),
-                          Expanded(
-                            child: Text(
-                              discussion[index]['title'].toString(),
-                              softWrap: true,
-                              // overflow: TextOverflow.fade,
-                              style: TextStyle(fontSize: 12,),
-                            ),
-                          )
-                        ],
-                      ),
+          Divider(color: Colors.white,thickness: 2,),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headingtext('Clan discussions'),
+                SizedBox(
+                  height: 8.0,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(top:8.0),
+                    child: Row(
+                      children: [
+                        Text(discussion[index]['heading'].toString(),style: TextStyle(fontSize: 20,color: Colors.pink),),
+                        SizedBox(width: 8.0,),
+                        Expanded(
+                          child: Text(
+                            discussion[index]['title'].toString(),
+                            softWrap: true,
+                            // overflow: TextOverflow.fade,
+                            style: TextStyle(fontSize: 12,color: Colors.white),
+                          ),
+                        )
+                      ],
                     ),
-                    itemCount: pastPerformances.length,
-                  )
-                ],
-              ),
+                  ),
+                  itemCount: pastPerformances.length,
+                )
+              ],
             ),
           ),
-          SizedBox(height: 6.0,), 
-          Card(
-            elevation: 8,
-            child: Container(
-              padding: EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Clan members',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  SizedBox(
-                    height: 6.0,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) => Padding(
-                      padding: const EdgeInsets.only(top:12.0),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                members[index]['image'].toString()),
+          Divider(color: Colors.white,thickness: 2,),
+          Container(
+            padding: EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headingtext('Clan members'),
+                SizedBox(
+                  height: 8.0,
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.only(top:12.0),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(
+                              members[index]['image'].toString()),
+                        ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Expanded(
+                          child: Text(
+                            members[index]['Name'].toString(),
+                            softWrap: true,
+                            // overflow: TextOverflow.fade,
+                            style: TextStyle(fontSize: 18,color: Colors.pink),
                           ),
-                          SizedBox(
-                            width: 8.0,
-                          ),
-                          Expanded(
-                            child: Text(
-                              members[index]['Name'].toString(),
-                              softWrap: true,
-                              // overflow: TextOverflow.fade,
-                              style: TextStyle(fontSize: 18,),
-                            ),
-                          )
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                    itemCount: pastPerformances.length,
-                  )
-                ],
-              ),
+                  ),
+                  itemCount: pastPerformances.length,
+                )
+              ],
             ),
           ),
           SizedBox(height: 6.0,)
@@ -277,17 +260,24 @@ class CategoryScreenWidget extends StatelessWidget {
     );
   }
 
+  Text headingtext(String heading) {
+    return Text(
+                heading,
+                style: TextStyle(fontSize: 24,color:Colors.amber)
+              );
+  }
+
   Row achievementsCard(String name, String title) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           name,
-          style: TextStyle(fontSize: 20),
+          style: TextStyle(fontSize: 20, color: Colors.pink),
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: 30,color: Colors.amber),
         ),
       ],
     );

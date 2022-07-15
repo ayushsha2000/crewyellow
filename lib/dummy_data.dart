@@ -40,11 +40,11 @@ const DUMMY_DATA = [
     members: [ 
       { 
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg81DH4QHMraOPyh5pCpSS9l2a7MRs-yi4Fg&usqp=CAU', 
-        'Name': 'Dhoni'
+        'Name': 'Dhoni-Team captain'
       }, 
       { 
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr6O89kJLAKdkxK4VS_YBtpqI5WknjB7-UZw&usqp=CAU', 
-        'Name': 'Raydu'
+        'Name': 'Raydu-Vice captain'
       }
     ],
     wins: 6,
@@ -95,11 +95,11 @@ const DUMMY_DATA = [
     members: [ 
       { 
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT97YbPAMAMQVeOO4CeMiKy-diGnWEHQtUMgA&usqp=CAU', 
-        'Name': 'Virat'
+        'Name': 'Virat-Team captain'
       }, 
       { 
         'image': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkDtJmJUuDGaIC3waJ1g1v6cyflezhYRDfsg&usqp=CAU', 
-        'Name': 'Maxwell'
+        'Name': 'Maxwell-clan head'
       }
     ],
     wins: 10,
