@@ -1,6 +1,5 @@
-import 'package:camp/screens/category_details_screen.dart';
-import 'package:camp/screens/category_screen.dart';
-import 'package:flutter/material.dart';
+import 'package:camp/screens/tabScreen.dart';
+import 'package:flutter/cupertino.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,18 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       title: 'Crew Yellow',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        
-        primarySwatch: Colors.amber,
-    
-      ),
-      home: const CategoryScreen(),
-      routes: { 
-        CategoryScreenDetail.routeName: (context)=> CategoryScreenDetail(),
-      },
+      home: TabsScreen(),
     );
   }
 }

@@ -36,11 +36,11 @@ class CategoryScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top:8.0,left: 8.0, right:8.0),
+      padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
       child: ListView(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height/2.5,
+            height: MediaQuery.of(context).size.height / 2.5,
             width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.black,
@@ -116,22 +116,21 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          
-          Divider(color: Colors.white,thickness: 2,),
-          
-          Padding(
-            padding: const EdgeInsets.only(top: 8,left:12.0,right: 8.0),
-            child: headingtext('Achievements')
+          Divider(
+            color: Colors.white,
+            thickness: 2,
           ),
-                SizedBox(
-                  height: 8.0,
-                ),
+          Padding(
+              padding: const EdgeInsets.only(top: 8, left: 12.0, right: 8.0),
+              child: headingtext('Achievements')),
+          SizedBox(
+            height: 8.0,
+          ),
           Container(
             padding: EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 achievementsCard('Current League', currentLeague),
                 achievementsCard('League Ranking', leagueRanking),
                 achievementsCard('Experience', experience),
@@ -139,7 +138,10 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          Divider(color: Colors.white,thickness: 2,),
+          Divider(
+            color: Colors.white,
+            thickness: 2,
+          ),
           Container(
             padding: EdgeInsets.all(8.0),
             child: Column(
@@ -152,24 +154,31 @@ class CategoryScreenWidget extends StatelessWidget {
                 ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(top:12.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
-                      
                       children: [
-                        Container( 
-                          height: 120, 
+                        Container(
+                          height: 120,
                           width: 150,
-                        decoration: BoxDecoration( 
-                          image: DecorationImage(image: NetworkImage(pastPerformances[index]['image'].toString(),),fit: BoxFit.cover)
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                    pastPerformances[index]['image'].toString(),
+                                  ),
+                                  fit: BoxFit.cover)),
                         ),
+                        SizedBox(
+                          width: 20,
                         ),
-                        SizedBox(width: 20,),
                         Expanded(
                           child: Text(
                             pastPerformances[index]['Name'].toString(),
                             softWrap: true,
                             // overflow: TextOverflow.fade,
-                            style: TextStyle(fontSize: 18,color: Colors.pink,fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.pink,
+                                fontWeight: FontWeight.w500),
                           ),
                         )
                       ],
@@ -180,7 +189,10 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          Divider(color: Colors.white,thickness: 2,),
+          Divider(
+            color: Colors.white,
+            thickness: 2,
+          ),
           Container(
             padding: EdgeInsets.all(8.0),
             child: Column(
@@ -193,17 +205,22 @@ class CategoryScreenWidget extends StatelessWidget {
                 ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(top:8.0),
+                    padding: const EdgeInsets.only(top: 8.0),
                     child: Row(
                       children: [
-                        Text(discussion[index]['heading'].toString(),style: TextStyle(fontSize: 20,color: Colors.pink),),
-                        SizedBox(width: 8.0,),
+                        Text(
+                          discussion[index]['heading'].toString(),
+                          style: TextStyle(fontSize: 20, color: Colors.pink),
+                        ),
+                        SizedBox(
+                          width: 8.0,
+                        ),
                         Expanded(
                           child: Text(
                             discussion[index]['title'].toString(),
                             softWrap: true,
                             // overflow: TextOverflow.fade,
-                            style: TextStyle(fontSize: 12,color: Colors.white),
+                            style: TextStyle(fontSize: 12, color: Colors.white),
                           ),
                         )
                       ],
@@ -214,7 +231,10 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          Divider(color: Colors.white,thickness: 2,),
+          Divider(
+            color: Colors.white,
+            thickness: 2,
+          ),
           Container(
             padding: EdgeInsets.all(8.0),
             child: Column(
@@ -227,13 +247,13 @@ class CategoryScreenWidget extends StatelessWidget {
                 ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(top:12.0),
+                    padding: const EdgeInsets.only(top: 12.0),
                     child: Row(
                       children: [
                         CircleAvatar(
                           radius: 30,
-                          backgroundImage: NetworkImage(
-                              members[index]['image'].toString()),
+                          backgroundImage:
+                              NetworkImage(members[index]['image'].toString()),
                         ),
                         SizedBox(
                           width: 20.0,
@@ -243,7 +263,7 @@ class CategoryScreenWidget extends StatelessWidget {
                             members[index]['Name'].toString(),
                             softWrap: true,
                             // overflow: TextOverflow.fade,
-                            style: TextStyle(fontSize: 18,color: Colors.pink),
+                            style: TextStyle(fontSize: 18, color: Colors.pink),
                           ),
                         )
                       ],
@@ -254,17 +274,16 @@ class CategoryScreenWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 6.0,)
+          SizedBox(
+            height: 6.0,
+          )
         ],
       ),
     );
   }
 
   Text headingtext(String heading) {
-    return Text(
-                heading,
-                style: TextStyle(fontSize: 24,color:Colors.amber)
-              );
+    return Text(heading, style: TextStyle(fontSize: 24, color: Colors.amber));
   }
 
   Row achievementsCard(String name, String title) {
@@ -277,7 +296,7 @@ class CategoryScreenWidget extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 30,color: Colors.amber),
+          style: TextStyle(fontSize: 30, color: Colors.amber),
         ),
       ],
     );

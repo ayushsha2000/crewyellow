@@ -10,22 +10,17 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Crew Yellow',style: TextStyle(color:Colors.black),),
-        backgroundColor: Colors.white,
-      ),
-      body: ListView( 
-        children: DUMMY_DATA
-            .map(
-              (e) => CategoryItem( 
-                id:e.id, 
+      backgroundColor: Colors.black,
+        body: ListView(
+      children: DUMMY_DATA
+          .map(
+            (e) => CategoryItem(
+                id: e.id,
                 clanName: e.clanName,
-                logo: e.logo, 
-                description: e.description
-              ),
-            ).toList(),
-      )
-    );
+                logo: e.logo,
+                description: e.description),
+          )
+          .toList(),
+    ));
   }
 }
